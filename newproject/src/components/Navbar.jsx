@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav
       style={{
         fontFamily: "Poppins",
-        marginTop: "10px",
+        // marginTop: "10px",
         position: 'sticky',
         top: '0',
         zIndex: '1000',
@@ -16,7 +16,7 @@ const Navbar = () => {
         alignItems: 'center',
         color: "white",
         padding: "10px 20px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", 
+        // boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", 
       }}
     >
       <div

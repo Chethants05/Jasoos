@@ -145,6 +145,16 @@ const UploadPage = () => {
 
   return (
     <Container>
+      <a style={{
+        textDecoration:"none",
+        fontFamily:"Poppins",
+        color:"black",
+        border:"1px solid black",
+        padding:"5px 20px",
+        position:"absolute",
+        left:"20px",
+        top:"20px"
+      }} href="/">HOME</a>
       <Header>Upload Image</Header>
       <Form onSubmit={handleImageUpload}>
         <FileInput
