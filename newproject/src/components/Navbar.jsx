@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-scroll';
+import JasoosLogo from '../assets/Jasoos.png'
 
 const Navbar = () => {
   return (
@@ -26,7 +27,9 @@ const Navbar = () => {
           fontWeight: "700",
         }}
       >
-        LOGO
+        <img src={JasoosLogo} style={{
+          width:"30px"
+        }}/>
       </div>
       <div
         className="othernav"
@@ -71,6 +74,27 @@ const Navbar = () => {
           About Us
         </Link>
 
+
+        
+        <Link
+          to="services"
+          smooth={true}
+          duration={500}
+          style={{
+            fontWeight: '400',
+            color: 'white',
+            textDecoration: 'none',
+            cursor: 'pointer',
+            transition: 'color 0.3s',
+          }}
+          onMouseEnter={(e) => (e.target.style.color = '#4a90e2')}
+          onMouseLeave={(e) => (e.target.style.color = 'white')}
+        >
+          Services
+        </Link>
+
+        
+
         <Link
           to="images"
           smooth={true}
@@ -87,11 +111,13 @@ const Navbar = () => {
         >
           Tournaments
         </Link>
+
+
       </div>
       
       {/* JOIN US! Button */}
       <Link
-        to="about"
+        to="AboutUs"
         smooth={true}
         duration={500}
         style={{

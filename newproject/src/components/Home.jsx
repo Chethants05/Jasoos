@@ -28,7 +28,7 @@ function Home() {
         style={{
           fontFamily: "Anton",
           fontSize: "6rem",
-          lineHeight: "90px",
+          lineHeight: "100px",
           marginTop: "150px",
           color: "white",
           letterSpacing: "2px",
@@ -37,9 +37,10 @@ function Home() {
           transition: 'opacity 1s ease, transform 1s ease',
         }}
       >
-        WEBSITE NAME <br />
+        JASOOS <br />
         ESPORTS
       </div>
+      <div className="imgg">
       <img
         src={MainImg}
         alt="Main"
@@ -49,8 +50,10 @@ function Home() {
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? 'scale(1)' : 'scale(0.8)',
           transition: 'opacity 1s ease, transform 1s ease',
+          position:"relative"
         }}
       />
+      </div>
     </div>
   );
 }

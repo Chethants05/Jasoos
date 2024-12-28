@@ -2,6 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import About1 from '../assets/About1.jpg';
 import UserImg from '../assets/user.jpg';
 import Clients from './Clients';
+import jagga from '../assets/jagga.png'
+import arnab from '../assets/arnab.png'
+import balram from '../assets/balram.png'
+import Services from './Services'
 
 function AboutUs() {
   const [isVisible, setIsVisible] = useState(false);
@@ -173,11 +177,11 @@ function AboutUs() {
               }}
             >
               <img
-                src={UserImg}
+                src={jagga}
                 alt="Founder"
                 style={{
                   width: "200px",
-                  height: "220px",
+                  height: "200px",
                   borderRadius: "20px",
                   border: "5px solid rgb(105, 0, 109)",
                 }}
@@ -189,7 +193,7 @@ function AboutUs() {
               >
                 JAGGA
               </p>
-              <p>FOUNDER & <br /> CEO</p>
+              <p>FOUNDER & CEO</p>
             </div>
 
             <div
@@ -202,11 +206,11 @@ function AboutUs() {
               }}
             >
               <img
-                src={UserImg}
+                src={balram}
                 alt="Co-Founder"
                 style={{
                   width: "200px",
-                  height: "220px",
+                  height: "200px",
                   borderRadius: "20px",
                   border: "5px solid rgb(105, 0, 109)",
                 }}
@@ -218,7 +222,7 @@ function AboutUs() {
               >
                 BALRAM
               </p>
-              <p>CO-FOUNDER & <br /> COO</p>
+              <p>CO-FOUNDER &  COO</p>
             </div>
 
             <div
@@ -231,11 +235,11 @@ function AboutUs() {
               }}
             >
               <img
-                src={UserImg}
+                src={arnab}
                 alt="Project Lead"
                 style={{
                   width: "200px",
-                  height: "220px",
+                  height: "200px",
                   borderRadius: "20px",
                   border: "5px solid rgb(105, 0, 109)",
                 }}
@@ -251,6 +255,7 @@ function AboutUs() {
             </div>
           </div>
         </div>
+        <Services />
         <Clients />
       </div>
     </>
