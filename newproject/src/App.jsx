@@ -1,18 +1,16 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import Images from './components/Images';
-import AboutUs from './components/AboutUs';
-import ImageUploadAndDisplay from './imageupload';
+import Mainhome from './mainHome'
+import UploadPage from './components/uploadpage';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Home />
-      <ImageUploadAndDisplay/>
-      <Images />
-      <AboutUs />
-    </div>
+
+    <Router>
+    <Routes>
+      <Route path="/" element={<Mainhome />} />
+      <Route path="/upload" element={<UploadPage />} />
+    </Routes>
+  </Router>
   );
 };
 

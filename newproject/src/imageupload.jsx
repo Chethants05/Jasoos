@@ -180,14 +180,7 @@ const ImageUploadAndDisplay = () => {
     <Container>
       <Header>Image Upload and Gallery</Header>
 
-      <Form onSubmit={handleImageUpload}>
-        <FileInput
-          type="file"
-          onChange={(e) => setSelectedFile(e.target.files[0])}
-          accept="image/*"
-        />
-        <UploadButton type="submit">Upload</UploadButton>
-      </Form>
+
 
       {images.length > 0 ? (
         <Gallery>
