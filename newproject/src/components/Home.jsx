@@ -1,28 +1,45 @@
-// src/components/Home.js
 import React from 'react';
-import styled from 'styled-components';
+import MainImg from '../assets/mainImg.png';
 
-const HomeSection = styled.section`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url('https://source.unsplash.com/random/1600x900') center/cover no-repeat;
-  color: white;
-  text-align: center;
-`;
-
-const Title = styled.h1`
-  font-size: 4rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-`;
-
-const Home = () => {
+function Home() {
   return (
-    <HomeSection id="home">
-      <Title>Welcome to Our Image Gallery</Title>
-    </HomeSection>
+    <div
+      style={{
+        margin: "0",
+        padding: "0",
+        display: "flex",
+        width: "100vw",
+        height: "110vh",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+      }}
+    >
+      <div
+        className="heroText"
+        style={{
+          fontFamily: "Anton",
+          fontSize: "6rem",
+          lineHeight: "90px",
+          marginTop: "150px",
+          color: "white",
+          letterSpacing: "2px",
+        }}
+      >
+        WEBSITE NAME <br />
+        ESPORTS
+      </div>
+      <img
+        src={MainImg}
+        alt="Main"
+        style={{
+          width: "80%",
+          marginTop: "-130px",
+        }}
+      />
+    </div>
   );
-};
+}
 
 export default Home;

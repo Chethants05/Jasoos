@@ -1,22 +1,27 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Images from './components/Images';
 import AboutUs from './components/AboutUs';
-import ImageUploadAndDisplay from './imageupload';
+import Footer from './components/Footer';
 
-function mainHome() {
+function MainHome() {
+  const navigate = useNavigate(); // Initialize navigate
+
+  const handleNavigation = () => {
+    navigate('/upload'); // Navigate to the Upload Page
+  };
+
   return (
     <div>
-              <Navbar />
-              <Home />
-              <Images />
-              <AboutUs />
-              <button>
-                Upload Page
-              </button>
+      <Navbar />
+      <Home />
+      <AboutUs />
+      <Images />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default mainHome
+export default MainHome;

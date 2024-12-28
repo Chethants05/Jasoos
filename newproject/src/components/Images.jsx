@@ -1,27 +1,5 @@
-// src/components/Images.js
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import axios from "axios";
-
-const Gallery = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
-`;
-
-const ImageWrapper = styled.div`
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
 
 const Images = () => {
   const [images, setImages] = useState([]);
@@ -39,13 +17,62 @@ const Images = () => {
   }, []);
 
   return (
-    <Gallery id="images">
+    <div style={{
+      marginTop:"-80px",
+      padding:"0",
+      display:"flex",
+      width:"100vw",
+      height:"100vh",
+      display:"flex",
+      flexDirection:"column",
+      alignItems:"center",
+      // justifyContent:"center",
+      textAlign:"center",
+    }}>
+      <div className="heroText" style={{
+        fontFamily:"Anton",
+        fontSize:"4rem",
+        lineHeight:"90px",
+        marginTop:"150px",
+        color:"white",
+        letterSpacing:"2px"
+      }}>
+        IMAGES
+      </div>
+    <div
+      id="images"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
+        gap: "20px",
+        padding: "20px",
+      }}
+    >
       {images.map((image) => (
-        <ImageWrapper key={image._id}>
-          <Image src={image.imageUrl} alt={image.name} />
-        </ImageWrapper>
+        <div
+          key={image._id}
+          style={{
+            position: "relative",
+            borderRadius: "10px",
+            overflow: "hidden",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            textAlign: "center",
+          }}
+        >
+          <img
+            src={image.imageUrl}
+            alt={image.name}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+          {image.description && (
+            <p style={{ padding: "10px", fontSize: "14px", color: "#555" }}>
+              {image.description}
+            </p>
+          )}
+        </div>
       ))}
-    </Gallery>
+    </div>
+    </div>
   );
 };
 
