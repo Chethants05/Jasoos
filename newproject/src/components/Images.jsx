@@ -22,7 +22,7 @@ const Images = () => {
       padding:"0",
       display:"flex",
       width:"100vw",
-      height:"100vh",
+      height:"120vh",
       display:"flex",
       flexDirection:"column",
       alignItems:"center",
@@ -37,7 +37,7 @@ const Images = () => {
         color:"white",
         letterSpacing:"2px"
       }}>
-        IMAGES
+        TOURNAMENTS
       </div>
     <div
       id="images"

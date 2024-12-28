@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Images from './components/Images';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
+// import Clients from './components/Clients';
 
 function MainHome() {
   const navigate = useNavigate(); // Initialize navigate
@@ -19,6 +20,7 @@ function MainHome() {
       <Home />
       <AboutUs />
       <Images />
+      {/* <Clients /> */}
       <Footer />
     </div>
   );

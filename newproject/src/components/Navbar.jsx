@@ -38,7 +38,7 @@ const Navbar = () => {
         }}
       >
         <Link
-          to="Home"
+          to="home"
           smooth={true}
           duration={500}
           style={{
@@ -55,7 +55,7 @@ const Navbar = () => {
         </Link>
 
         <Link
-          to="about"
+          to="AboutUs"
           smooth={true}
           duration={500}
           style={{
@@ -85,7 +85,7 @@ const Navbar = () => {
           onMouseEnter={(e) => (e.target.style.color = '#4a90e2')}
           onMouseLeave={(e) => (e.target.style.color = 'white')}
         >
-          Images
+          Tournaments
         </Link>
       </div>
       

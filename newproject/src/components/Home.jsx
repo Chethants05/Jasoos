@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MainImg from '../assets/mainImg.png';
 
 function Home() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsVisible(true), 100); // Add delay for animation
+  }, []);
+
   return (
     <div
+      id="home"
       style={{
         margin: "0",
         padding: "0",
@@ -25,6 +32,9 @@ function Home() {
           marginTop: "150px",
           color: "white",
           letterSpacing: "2px",
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
+          transition: 'opacity 1s ease, transform 1s ease',
         }}
       >
         WEBSITE NAME <br />
@@ -36,6 +46,9 @@ function Home() {
         style={{
           width: "80%",
           marginTop: "-130px",
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'scale(1)' : 'scale(0.8)',
+          transition: 'opacity 1s ease, transform 1s ease',
         }}
       />
     </div>
