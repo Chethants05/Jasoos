@@ -1,5 +1,19 @@
 import React from 'react'
-
+import styled from 'styled-components'
+const Cont=styled.div`
+    display: flex;
+    flex-direction:row;
+    gap: 20px;
+    font-family:Poppins;
+    line-height:20px;
+    align-items:center;
+    text-align
+    justify-content:center;
+    @media(max-width:800px){
+    flex-direction:column}
+    @media(max-width:1000px){
+    }
+`;
 function Services() {
   return (
     <div id='services' style={{
@@ -22,14 +36,7 @@ function Services() {
             marginBottom:"30px",
             marginTop:"30px"
         }}>OUR SERVICES</p>
-        <div className="cont" style={{
-            fontFamily:"Poppins",
-            lineHeight:"20px",
-            display:"flex",
-            gap:"20px",
-            alignItems:"center",
-            justifyContent:"center",
-        }}>
+        <Cont>
             <div className="miniCont" style={{
                 // border:"2px solid white",
                 height:"180px",
@@ -125,7 +132,7 @@ function Services() {
                 }}>Integrating brands and sponsors to maximize visibility and audience connection.</p>
             </div>
 
-        </div>
+        </Cont>
 
         
     </div>

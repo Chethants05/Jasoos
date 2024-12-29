@@ -1,5 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import MainImg from '../assets/mainImg.png';
+import styled from 'styled-components';
+
+// Styled component
+const Herotext = styled.div`
+  font-family: 'Anton', sans-serif;
+  font-size: 6rem;
+  line-height: 100px;
+  margin-top: 150px;
+  color: white;
+  letter-spacing: 2px;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transform: ${(props) => (props.isVisible ? 'translateY(0)' : 'translateY(50px)')};
+  transition: opacity 1s ease, transform 1s ease;
+  @media(max-width:768px){
+  margin-top:100px;
+  }
+`;
+const Imgg =styled.div`
+@media (max-width:1000px){
+margin-top:180px;}`;
 
 function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,37 +43,24 @@ function Home() {
         textAlign: "center",
       }}
     >
-      <div
-        className="heroText"
-        style={{
-          fontFamily: "Anton",
-          fontSize: "6rem",
-          lineHeight: "100px",
-          marginTop: "150px",
-          color: "white",
-          letterSpacing: "2px",
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-          transition: 'opacity 1s ease, transform 1s ease',
-        }}
-      >
+      <Herotext isVisible={isVisible}>
         JASOOS <br />
         ESPORTS
-      </div>
-      <div className="imgg">
-      <img
-        src={MainImg}
-        alt="Main"
-        style={{
-          width: "80%",
-          marginTop: "-130px",
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'scale(1)' : 'scale(0.8)',
-          transition: 'opacity 1s ease, transform 1s ease',
-          position:"relative"
-        }}
-      />
-      </div>
+      </Herotext>
+      <Imgg>
+        <img
+          src={MainImg}
+          alt="Main"
+          style={{
+            width: "80%",
+            marginTop: "-130px",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'scale(1)' : 'scale(0.8)',
+            transition: 'opacity 1s ease, transform 1s ease',
+            position: "relative",
+          }}
+        />
+      </Imgg>
     </div>
   );
 }

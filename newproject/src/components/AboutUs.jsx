@@ -6,7 +6,14 @@ import jagga from '../assets/jagga.png'
 import arnab from '../assets/arnab.png'
 import balram from '../assets/balram.png'
 import Services from './Services'
-
+import styled from 'styled-components'
+const Imgcards = styled.div`
+    display: flex;
+    flex-direction:row;
+    gap: 35px;
+    @media(max-width:800px){
+    flex-direction:column}
+    `;
 function AboutUs() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -159,13 +166,7 @@ function AboutUs() {
           >
             OUR TEAM
           </p>
-          <div
-            className="imgcards"
-            style={{
-              display: "flex",
-              gap: "35px",
-            }}
-          >
+          <Imgcards>
             {/* Team Card */}
             <div
               className="card"
@@ -253,7 +254,7 @@ function AboutUs() {
               </p>
               <p>CO-FOUNDER & <br /> PROJECT LEAD</p>
             </div>
-          </div>
+          </Imgcards>
         </div>
         <Services />
         <Clients />

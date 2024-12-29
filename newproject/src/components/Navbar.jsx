@@ -151,6 +151,33 @@ const Navbar = () => {
           JOIN US!
         </button>
       </Link>
+      <style>
+      {`
+          @media (max-width: 768px) {
+            .hamburger {
+              display: none;
+            }
+
+            .nav-links {
+              display: flex !important;
+              flex-direction: row;
+              position: static;
+              background: none;
+              padding: 0;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .hamburger {
+              display: block;
+            }
+
+            .nav-links.open {
+              display: flex !important;
+            }
+          }
+        `}
+      </style>
     </nav>
   );
 };
