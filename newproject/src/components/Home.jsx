@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MainImg from '../assets/mainImg.png';
 
+
 function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -50,9 +51,10 @@ function Home() {
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? 'scale(1)' : 'scale(0.8)',
           transition: 'opacity 1s ease, transform 1s ease',
-          position:"relative"
+          position:"relative",
         }}
       />
+      <img src="" alt="" />
       </div>
     </div>
   );

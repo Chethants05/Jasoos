@@ -6,6 +6,7 @@ import jagga from '../assets/jagga.png'
 import arnab from '../assets/arnab.png'
 import balram from '../assets/balram.png'
 import Services from './Services'
+import JasoosImg from '../assets/Jasoos.png'
 
 function AboutUs() {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,6 +61,7 @@ function AboutUs() {
             display: "flex",
             gap: "50px",
             justifyContent: "center",
+            alignItems:"center",
             textAlign: "Left",
             transform: isVisible ? "translateX(0)" : "translateX(-100px)",
             opacity: isVisible ? 1 : 0,
@@ -68,9 +70,9 @@ function AboutUs() {
         >
           <img
             style={{
-              width: "50%",
+              width: "30%",
             }}
-            src={About1}
+            src={JasoosImg}
             alt="About"
           />
           <div
@@ -99,49 +101,11 @@ function AboutUs() {
           </div>
         </div>
 
-        <div
-          className="row2"
-          style={{
-            display: "flex",
-            gap: "50px",
-            justifyContent: "center",
-            textAlign: "Left",
-            transform: isVisible ? "translateX(0)" : "translateX(100px)",
-            opacity: isVisible ? 1 : 0,
-            transition: "all 1s ease",
-          }}
-        >
-          <div
-            className="row1Img"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <p
-              style={{
-                fontFamily: "Anton",
-                fontSize: "6rem",
-                lineHeight: "90px",
-              }}
-            >
-              WHO <br /> WE ARE
-            </p>
-            <p
-              style={{
-                fontFamily: "Poppins",
-              }}
-            >
-              TEXT
-            </p>
+        <div>
+          <p>FOLLOW US!</p>
+          <div className="socialIcons">
+            
           </div>
-          <img
-            style={{
-              width: "50%",
-            }}
-            src={About1}
-            alt="About"
-          />
         </div>
 
         <div
