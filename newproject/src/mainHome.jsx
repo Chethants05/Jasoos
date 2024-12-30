@@ -6,6 +6,7 @@ import Images from './components/Images';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
 import Services from './components/Services';
+import './index.css'
 // import Clients from './components/Clients';
 
 function MainHome() {
@@ -16,7 +17,7 @@ function MainHome() {
   };
 
   return (
-    <div>
+    <div  className='new'>
       <Navbar />
       <Home />
       <AboutUs />
