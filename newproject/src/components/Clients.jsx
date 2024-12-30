@@ -4,7 +4,16 @@ import logo2 from '../assets/burnghost_logo.jpeg'
 import logo3 from '../assets/ignite.png'
 import logo4 from '../assets/rummy.png'
 import logo5 from '../assets/sandbox_logo.webp'
+import styled from 'styled-components'
 
+const ClientCards=styled.div`
+    display:flex;
+    gap:20px; 
+    flex-direction:row;
+    @media(max-width:800px){
+    flex-direction:column;
+    }
+    `;
 function Clients() {
   return (
     <div style={{
@@ -25,10 +34,7 @@ function Clients() {
             OUR CLIENTS
         </div>
 
-        <div className="ClientCards" style={{
-            display:"flex",
-            gap:"20px", 
-        }}>
+        <ClientCards>
             <div className="card">
                 <img  style={{
                 height:"200px",
@@ -64,7 +70,7 @@ function Clients() {
                 // mixBlendMode:"screen"
             }} src={logo5} alt="" />
             </div>
-        </div>
+        </ClientCards>
     </div>
   )
 }

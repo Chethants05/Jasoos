@@ -1,5 +1,12 @@
 import React from 'react'
+import styled from 'styled-components'
 
+const In = styled.div`
+display: flex;
+gap: 10px; 
+flex-wrap:wrap;
+overflow:hidden     ;
+`;
 function Footer() {
   return (
     <footer
@@ -11,6 +18,7 @@ function Footer() {
       flexWrap: "wrap",
       justifyContent: "space-between",
       alignItems: "flex-start",
+      backgroundSize:"contain",
     }}
   >
     {/* About Us Section */}
@@ -87,7 +95,7 @@ function Footer() {
           borderRadius: "10px",
         }}
       >
-        <div style={{ display: "flex", gap: "10px" }}>
+        <In>
           <input
             type="text"
             placeholder="Name"
@@ -114,7 +122,7 @@ function Footer() {
               fontFamily: "Poppins",
             }}
           />
-        </div>
+        </In>
         <input
           type="email"
           placeholder="Email Address"

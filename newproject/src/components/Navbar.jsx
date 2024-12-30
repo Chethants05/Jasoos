@@ -1,43 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-scroll';
-import JasoosLogo from '../assets/Jasoos.png'
+import JasoosLogo from '../assets/Jasoos.png';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav
       style={{
-        fontFamily: "Poppins",
-        // marginTop: "10px",
+        fontFamily: 'Poppins',
         position: 'sticky',
-        top: '0',
-        zIndex: '1000',
-        background: "linear-gradient(87deg, rgb(12, 100, 184) 0%, rgb(1, 29, 64) 100%)",
+        top: 0,
+        zIndex: 1000,
+        background: 'linear-gradient(87deg, rgb(12, 100, 184) 0%, rgb(1, 29, 64) 100%)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        color: "white",
-        padding: "10px 20px",
-        // boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", 
+        color: 'white',
+        padding: '10px 20px',
       }}
     >
       <div
         className="logo"
         style={{
-          fontSize: "20px",
-          fontWeight: "700",
+          fontSize: '20px',
+          fontWeight: '700',
         }}
       >
-        <img src={JasoosLogo} style={{
-          width:"30px"
-        }}/>
+        <img
+          src={JasoosLogo}
+          alt="Logo"
+          style={{
+            width: '30px',
+          }}
+        />
       </div>
+
+      {/* Hamburger Menu Icon */}
       <div
-        className="othernav"
+        className="hamburger"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
         style={{
-          fontSize: "15px",
-          display: "flex",
-          gap: "20px",
-          paddingLeft: "80px",
+          display: 'none',
+          cursor: 'pointer',
+          fontSize: '25px',
+        }}
+      >
+        &#9776;
+      </div>
+
+      {/* Navigation Links */}
+      <div
+        className={`nav-links ${isMenuOpen ? 'open' : ''}`}
+        style={{
+          display: 'flex',
+          gap: '20px',
+          fontSize: '15px',
+          paddingLeft: '80px',
+          flexDirection: isMenuOpen ? 'column' : 'row',
+          position: isMenuOpen ? 'absolute' : 'static',
+          top: isMenuOpen ? '60px' : 'auto',
+          background: isMenuOpen ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
+          padding: isMenuOpen ? '10px' : '0',
+          right: isMenuOpen ? '10px' : 'auto',
+          borderRadius: isMenuOpen ? '10px' : '0',
+          
         }}
       >
         <Link
@@ -74,8 +101,6 @@ const Navbar = () => {
           About Us
         </Link>
 
-
-        
         <Link
           to="services"
           smooth={true}
@@ -93,8 +118,6 @@ const Navbar = () => {
           Services
         </Link>
 
-        
-
         <Link
           to="images"
           smooth={true}
@@ -111,10 +134,8 @@ const Navbar = () => {
         >
           Tournaments
         </Link>
-
-
       </div>
-      
+
       {/* JOIN US! Button */}
       <Link
         to="AboutUs"
@@ -130,27 +151,45 @@ const Navbar = () => {
       >
         <button
           style={{
-            background: "transparent",
-            border: "1px solid rgb(255, 255, 255)",
-            color: "white",
-            fontSize: "13px",
-            fontWeight: "bold",
-            padding: "10px 20px",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
+            background: 'transparent',
+            border: '1px solid rgb(255, 255, 255)',
+            color: 'white',
+            fontSize: '13px',
+            fontWeight: 'bold',
+            padding: '10px 20px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "white";
-            e.target.style.color = "black";
+            e.target.style.backgroundColor = 'white';
+            e.target.style.color = 'black';
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = "transparent";
-            e.target.style.color = "#4a90e2";
+            e.target.style.backgroundColor = 'transparent';
+            e.target.style.color = 'white';
           }}
         >
           JOIN US!
         </button>
       </Link>
+
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .hamburger {
+              display: block;
+            }
+
+            .nav-links {
+              display: none;
+            }
+
+            .nav-links.open {
+              display: flex;
+            }
+          }
+        `}
+      </style>
     </nav>
   );
 };
