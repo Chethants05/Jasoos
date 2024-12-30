@@ -21,6 +21,7 @@ const Imgg =styled.div`
 @media (max-width:1000px){
 margin-top:180px;}`;
 
+
 function Home() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -46,6 +47,7 @@ function Home() {
       <Herotext isVisible={isVisible}>
         JASOOS <br />
         ESPORTS
+
       </Herotext>
       <Imgg>
         <img
@@ -61,6 +63,7 @@ function Home() {
           }}
         />
       </Imgg>
+
     </div>
   );
 }
