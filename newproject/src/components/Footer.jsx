@@ -85,9 +85,11 @@ function Footer() {
           backgroundColor: "#262626",
           padding: "20px",
           borderRadius: "10px",
+          
         }}
       >
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div style={{ display: "flex", gap: "10px",flexWrap:'wrap',
+          overflow:'hidden',}}>
           <input
             type="text"
             placeholder="Name"

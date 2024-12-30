@@ -6,7 +6,7 @@ import jagga from '../assets/jagga.png'
 import arnab from '../assets/arnab.png'
 import balram from '../assets/balram.png'
 import Services from './Services'
-<<<<<<< HEAD
+import JasoosImg from '../assets/Jasoos.png'
 import styled from 'styled-components'
 const Imgcards = styled.div`
     display: flex;
@@ -15,10 +15,6 @@ const Imgcards = styled.div`
     @media(max-width:800px){
     flex-direction:column}
     `;
-=======
-import JasoosImg from '../assets/Jasoos.png'
-
->>>>>>> 4699bef44355d929f406453e923af45e002beb27
 function AboutUs() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);

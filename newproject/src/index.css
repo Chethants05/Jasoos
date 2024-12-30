@@ -8,5 +8,7 @@
 body{
     background: rgb(144,179,212);
     background: linear-gradient(87deg, rgb(12, 100, 184) 0%, rgb(1, 29, 64) 100%);
-    overflow-x: hidden;
+    overflow-wrap:anywhere;
+   
+ 
 }

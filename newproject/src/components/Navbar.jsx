@@ -1,13 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-scroll';
-import JasoosLogo from '../assets/Jasoos.png'
+import JasoosLogo from '../assets/Jasoos.png';
+import styled from 'styled-components';
+
+const Othernav = styled.div`
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-left: 80px;
+  justify-content: space-between;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    padding-left: 0;
+    width: 100%;
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')}; /* Toggle visibility */
+    background: rgba(1, 29, 64, 0.95);
+    position: absolute;
+    top: 60px; /* Adjust this value as per your navbar height */
+    left: 0;
+    z-index: 1000; /* Make sure it's above other content */
+  }
+`;
+
+const Hamburger = styled.div`
+  display: none;
+  cursor: pointer;
+  font-size: 25px;
+
+  @media (max-width: 600px) {
+    display: block; /* Show the hamburger icon on mobile */
+  }
+`;
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false); // State to manage the toggle
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen); // Toggle the menu open/close
+  };
+
   return (
     <nav
       style={{
         fontFamily: "Poppins",
-        // marginTop: "10px",
         position: 'sticky',
         top: '0',
         zIndex: '1000',
@@ -17,7 +54,6 @@ const Navbar = () => {
         alignItems: 'center',
         color: "white",
         padding: "10px 20px",
-        // boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", 
       }}
     >
       <div
@@ -27,19 +63,12 @@ const Navbar = () => {
           fontWeight: "700",
         }}
       >
-        <img src={JasoosLogo} style={{
-          width:"30px"
-        }}/>
+        <img src={JasoosLogo} style={{ width: "30px" }} alt="Logo" />
       </div>
-      <div
-        className="othernav"
-        style={{
-          fontSize: "15px",
-          display: "flex",
-          gap: "20px",
-          paddingLeft: "80px",
-        }}
-      >
+      
+      <Hamburger onClick={toggleMenu}>☰</Hamburger> {/* Hamburger Icon */}
+
+      <Othernav isOpen={isOpen}>
         <Link
           to="home"
           smooth={true}
@@ -74,8 +103,6 @@ const Navbar = () => {
           About Us
         </Link>
 
-
-        
         <Link
           to="services"
           smooth={true}
@@ -93,8 +120,6 @@ const Navbar = () => {
           Services
         </Link>
 
-        
-
         <Link
           to="images"
           smooth={true}
@@ -111,9 +136,7 @@ const Navbar = () => {
         >
           Tournaments
         </Link>
-
-
-      </div>
+      </Othernav>
       
       {/* JOIN US! Button */}
       <Link
@@ -151,33 +174,6 @@ const Navbar = () => {
           JOIN US!
         </button>
       </Link>
-      <style>
-      {`
-          @media (max-width: 768px) {
-            .hamburger {
-              display: none;
-            }
-
-            .nav-links {
-              display: flex !important;
-              flex-direction: row;
-              position: static;
-              background: none;
-              padding: 0;
-            }
-          }
-
-          @media (max-width: 768px) {
-            .hamburger {
-              display: block;
-            }
-
-            .nav-links.open {
-              display: flex !important;
-            }
-          }
-        `}
-      </style>
     </nav>
   );
 };

@@ -42,12 +42,14 @@ function Home() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
+        position: 'sticky',
+        backgroundSize:"contain",
       }}
     >
       <Herotext isVisible={isVisible}>
         JASOOS <br />
         ESPORTS
-<<<<<<< HEAD
+
       </Herotext>
       <Imgg>
         <img
@@ -63,24 +65,6 @@ function Home() {
           }}
         />
       </Imgg>
-=======
-      </div>
-      <div className="imgg">
-      <img
-        src={MainImg}
-        alt="Main"
-        style={{
-          width: "80%",
-          marginTop: "-130px",
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'scale(1)' : 'scale(0.8)',
-          transition: 'opacity 1s ease, transform 1s ease',
-          position:"relative",
-        }}
-      />
-      <img src="" alt="" />
-      </div>
->>>>>>> 4699bef44355d929f406453e923af45e002beb27
     </div>
   );
 }
