@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import axios from "axios";
 
-
 // Keyframe for animations
 const fadeIn = keyframes`
   from {
@@ -135,10 +134,11 @@ const ImageUploadAndDisplay = () => {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/models/images.js");
+      const response = await axios.get("http://localhost:5000/images");
       setImages(response.data);
     } catch (err) {
       console.error("Error fetching images:", err);
+      alert("Error fetching images. Please try again later.");
     }
   };
 
@@ -155,38 +155,56 @@ const ImageUploadAndDisplay = () => {
 
     const formData = new FormData();
     formData.append("image", selectedFile);
+    formData.append("name", selectedFile.name);
 
     try {
-      const response = await axios.post("http://localhost:5000/uploads", formData, {
+      const response = await axios.post("http://localhost:5000/images/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      setImages((prevImages) => [...prevImages, response.data]);
+      setImages((prevImages) => [...prevImages, response.data.image]);
       setSelectedFile(null);
     } catch (err) {
       console.error("Error uploading image:", err);
+      alert("Error uploading image: " + (err.response?.data || err.message));
     }
   };
 
   const handleImageDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/models/images/${id}`);
-      setImages((prevImages) => prevImages.filter((image) => image._id !== id));
-    } catch (err) {
-      console.error("Error deleting image:", err);
+    if (window.confirm("Are you sure you want to delete this image?")) {
+      try {
+        await axios.delete(`http://localhost:5000/images/${id}`);
+        setImages((prevImages) => prevImages.filter((image) => image._id !== id));
+      } catch (err) {
+        console.error("Error deleting image:", err);
+        alert("Error deleting image. Please try again.");
+      }
     }
   };
 
   return (
     <Container>
       <Header>Image Upload and Gallery</Header>
-
-
-
+      <Form onSubmit={handleImageUpload}>
+        <FileInput
+          type="file"
+          onChange={(e) => setSelectedFile(e.target.files[0])}
+        />
+        <UploadButton type="submit">Upload</UploadButton>
+      </Form>
+      
       {images.length > 0 ? (
         <Gallery>
           {images.map((image) => (
             <ImageWrapper key={image._id}>
-              <Image src={image.imageUrl} alt={image.name} />
+              <Image
+                src={`data:${image.image.contentType};base64,${btoa(
+                  new Uint8Array(image.image.data.data).reduce(
+                    (data, byte) => data + String.fromCharCode(byte),
+                    ""
+                  )
+                )}`}
+                alt={image.name}
+              />
               <DeleteButton onClick={() => handleImageDelete(image._id)}>×</DeleteButton>
             </ImageWrapper>
           ))}

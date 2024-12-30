@@ -1,20 +1,11 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
 const Image = require("../models/image");
 
 const router = express.Router();
 
-// Multer Storage Configuration
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-
+// Multer Storage Configuration (In-memory storage)
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 // GET all images
@@ -31,11 +22,16 @@ router.get("/", async (req, res) => {
 router.post("/upload", upload.single("image"), async (req, res) => {
   try {
     const newImage = new Image({
-      name: req.file.filename,
-      imageUrl: `http://localhost:5000/uploads/${req.file.filename}`,
+      name: req.body.name,
+      image: {
+        data: req.file.buffer,
+        contentType: req.file.mimetype,
+      },
+      description: req.body.description || "",
     });
+
     await newImage.save();
-    res.status(201).json(newImage);
+    res.status(201).json({ message: "Image uploaded successfully", image: newImage });
   } catch (err) {
     res.status(500).json({ error: "Error uploading image" });
   }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FlipCard from "./Flipcard";
 
 const Images = () => {
   const [images, setImages] = useState([]);
@@ -9,8 +8,9 @@ const Images = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/models/images.js");
-        setImages(response.data);
+        // Change this endpoint to the correct one for your backend
+        const response = await axios.get("http://localhost:5000/api/images"); // Ensure the endpoint matches your API
+        setImages(response.data); // Assuming response.data is an array of image objects
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -30,7 +30,7 @@ const Images = () => {
 
   return (
     <div
-    id="images"
+      id="images"
       style={{
         marginTop: "-80px",
         padding: "0",
@@ -103,17 +103,15 @@ const Images = () => {
                 flex: "0 0 100%",
                 borderRadius: "10px",
                 overflow: "hidden",
-                // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                 textAlign: "center",
                 transform: index === currentIndex ? "scale(1.1)" : "scale(0.9)",
                 transition: "transform 0.3s ease",
               }}
             >
-            
               <img
-                src={image.imageUrl}
-                alt={image.name}
-                style={{ width:"30vw"}}
+                src={image.imageUrl} // Ensure this matches your data structure
+                alt={image.name} // Ensure the image object contains a name
+                style={{ width: "30vw" }}
               />
               {image.description && (
                 <p style={{ padding: "10px", fontSize: "14px", color: "#555" }}>
