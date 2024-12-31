@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import ImageUploadAndDisplay from "../imageupload";
-
+import AdminLogin from "./AdminLogin";
 const Container = styled.div`
   font-family: "Arial, sans-serif";
   padding: 30px;
@@ -17,7 +17,7 @@ const Header = styled.h1`
   color: #2d3748;
 `;
 
-const LoginContainer = styled.div`
+const Form = styled.form`
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -33,6 +33,11 @@ const Input = styled.input`
   width: 100%;
   max-width: 300px;
   box-sizing: border-box;
+`;
+
+const FileInput = styled(Input)`
+  border: 2px dashed #cbd5e0;
+  background: #edf2f7;
 `;
 
 const Button = styled.button`
@@ -55,106 +60,39 @@ const Button = styled.button`
   }
 `;
 
-const Form = styled.form`
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-`;
-
-const FileInput = styled.input`
-  padding: 10px;
-  border: 2px dashed #cbd5e0;
-  border-radius: 8px;
-  background: #edf2f7;
-  font-size: 1rem;
-  color: #4a5568;
-  outline: none;
-  cursor: pointer;
-  transition: border-color 0.3s;
-
-  &:hover {
-    border-color: #4a5568;
-  }
-`;
-
-const UploadButton = styled(Button)``;
-
 const UploadPage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const validUsername = "admin";
-    const validPassword = "admin";
-
-    if (username === validUsername && password === validPassword) {
-      setIsLoggedIn(true);
-    } else {
-      alert("Invalid credentials. Please try again.");
-    }
-  };
+  const [description, setDescription] = useState("");
 
   const handleImageUpload = async (event) => {
     event.preventDefault();
-    if (!selectedFile) {
-      alert("Please select a file to upload");
+    if (!selectedFile || !description) {
+      alert("Please provide both an image and a description.");
       return;
     }
 
     const formData = new FormData();
     formData.append("image", selectedFile);
+    formData.append("description", description);
 
     try {
-      await axios.post("http://localhost:5000/uploads", formData, {
+      await axios.post("http://localhost:5000/images/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Image uploaded successfully!");
       setSelectedFile(null);
+      setDescription("");
     } catch (err) {
       console.error("Error uploading image:", err);
+      alert("Error uploading image. Please try again.");
     }
   };
-
-  if (!isLoggedIn) {
-    return (
-      <Container>
-        <Header>Login</Header>
-        <LoginContainer>
-          <Input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button onClick={handleLogin}>Login</Button>
-        </LoginContainer>
-      </Container>
-    );
-  }
+  // if (!isAdmin) {
+  //   return <AdminLogin onLogin={setIsAdmin} />;
+  // }
 
   return (
     <Container>
-      <a style={{
-        textDecoration:"none",
-        fontFamily:"Poppins",
-        color:"black",
-        border:"1px solid black",
-        padding:"5px 20px",
-        position:"absolute",
-        left:"20px",
-        top:"20px"
-      }} href="/">HOME</a>
       <Header>Upload Image</Header>
       <Form onSubmit={handleImageUpload}>
         <FileInput
@@ -162,7 +100,13 @@ const UploadPage = () => {
           onChange={(e) => setSelectedFile(e.target.files[0])}
           accept="image/*"
         />
-        <UploadButton type="submit">Upload</UploadButton>
+        <Input
+          type="text"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <Button type="submit">Upload</Button>
       </Form>
       <ImageUploadAndDisplay />
     </Container>

@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
+const Imagecontainer = styled.div`
+      position: relative;
+      flex: 0 0 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      transform: index === currentIndex ? scale(1.1): scale(0.9);
+      transition: transform 0.3s ease;
+      
+`;
 const Images = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,8 +19,8 @@ const Images = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        // Change this endpoint to the correct one for your backend
-        const response = await axios.get("http://localhost:5000/api/images"); // Ensure the endpoint matches your API
+        const response = await axios.get("http://localhost:5000/images-with-descriptions"); // Ensure the endpoint matches your API
+        console.log(response.data); // Debugging to verify API response structure
         setImages(response.data); // Assuming response.data is an array of image objects
       } catch (error) {
         console.error("Error fetching images:", error);
@@ -27,6 +38,10 @@ const Images = () => {
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
+
+  if (images.length === 0) {
+    return <p style={{ color: "white", fontSize: "20px" }}>Loading images...</p>;
+  }
 
   return (
     <div
@@ -96,29 +111,32 @@ const Images = () => {
           }}
         >
           {images.map((image, index) => (
-            <div
+            <Imagecontainer
               key={image._id}
-              style={{
-                position: "relative",
-                flex: "0 0 100%",
-                borderRadius: "10px",
-                overflow: "hidden",
-                textAlign: "center",
-                transform: index === currentIndex ? "scale(1.1)" : "scale(0.9)",
-                transition: "transform 0.3s ease",
-              }}
+              
             >
               <img
-                src={image.imageUrl} // Ensure this matches your data structure
-                alt={image.name} // Ensure the image object contains a name
-                style={{ width: "30vw" }}
+                src={`data:${image.image.contentType};base64,${btoa(
+                  new Uint8Array(image.image.data.data).reduce(
+                    (data, byte) => data + String.fromCharCode(byte),
+                    ""
+                  )
+                )}`}
+                alt={image.name}
+                style={{ paddingTop:"20px", width: "100%", maxWidth: "40vw", objectFit: "cover" }}
               />
               {image.description && (
-                <p style={{ padding: "10px", fontSize: "14px", color: "#555" }}>
+                <p style={{
+                  padding: "10px",
+                  fontSize: "14px", 
+                  color: "black", 
+                  fontFamily: "Poppins, serif", 
+                  fontWeight:'10px', 
+                   }}>
                   {image.description}
                 </p>
               )}
-            </div>
+            </Imagecontainer>
           ))}
         </div>
 

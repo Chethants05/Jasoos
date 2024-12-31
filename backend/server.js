@@ -19,34 +19,34 @@ const upload = multer({ storage });
 
 // Routes
 
-// Fetch all images
-app.get("/images", async (req, res) => {
+// Fetch all images and description
+app.get("/images-with-descriptions", async (req, res) => {
   try {
-    const images = await Image.find();
-    res.json(images);
+    const data = await Image.find({}, 'image description'); // Selects only 'image' and 'description' fields
+    res.json(data);
   } catch (err) {
-    res.status(500).json({ error: "Error fetching images" });
+    res.status(500).json({ error: "Error fetching images with descriptions" });
   }
 });
 
 // Upload a new image
 app.post("/images/upload", upload.single("image"), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).send("No file uploaded");
+  if (!req.file || !req.body.description) {
+    return res.status(400).send("Both image and description are required");
   }
 
   try {
     const newImage = new Image({
-      name: req.body.name || req.file.originalname,
+      name: req.body.name || req.file.originalname, // Name of the image (optional)
       image: {
-        data: req.file.buffer,
-        contentType: req.file.mimetype,
+        data: req.file.buffer, // Binary data of the image
+        contentType: req.file.mimetype, // MIME type of the image
       },
-      description: req.body.description || "",
+      description: req.body.description, // Description provided in the request body
     });
 
-    await newImage.save();
-    res.status(201).json(newImage);
+    await newImage.save(); // Save to MongoDB
+    res.status(201).json({ message: "Image uploaded successfully", newImage });
   } catch (err) {
     res.status(500).json({ error: "Error saving image" });
   }
@@ -54,16 +54,22 @@ app.post("/images/upload", upload.single("image"), async (req, res) => {
 
 // Delete an image
 app.delete("/images/:id", async (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
 
   try {
-    const image = await Image.findByIdAndDelete(id);
-    if (!image) {
-      return res.status(404).send("Image not found");
+    // Find and delete the document by its ID
+    const deletedImage = await Image.findByIdAndDelete(id);
+
+    if (!deletedImage) {
+      return res.status(404).json({ error: "Image not found" });
     }
-    res.json({ message: "Image deleted successfully" });
+
+    res.json({ 
+      message: "Image and description deleted successfully", 
+      deletedImage 
+    });
   } catch (err) {
-    res.status(500).json({ error: "Error deleting image" });
+    res.status(500).json({ error: "Error deleting image and description" });
   }
 });
 
