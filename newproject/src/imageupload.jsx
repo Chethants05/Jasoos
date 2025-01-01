@@ -49,9 +49,13 @@ const Image = styled.img`
 const Description = styled.p`
   padding: 10px;
   font-size: 0.9rem;
-  background-color: #edf2f7;
+  background-color: transparent;
   text-align: left;
   color: #2d3748;
+  font-family: "Poppins", "serif"; 
+  font-weight:10px;
+  text-align:center;
+  white-space: pre-wrap;
 `;
 
 const DeleteButton = styled.button`

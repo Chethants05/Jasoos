@@ -135,6 +135,7 @@ const Images = () => {
                   color: "black", 
                   fontFamily: "Poppins, serif", 
                   fontWeight:'10px', 
+                  whiteSpace: "pre-wrap",
                    }}>
                   {image.description}
                 </p>

@@ -33,6 +33,7 @@ const Input = styled.input`
   width: 100%;
   max-width: 300px;
   box-sizing: border-box;
+  white-space: pre-wrap;
 `;
 
 const FileInput = styled(Input)`
