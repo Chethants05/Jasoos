@@ -10,6 +10,30 @@ const ImageContainer = styled.div`
   text-align: center;
   transform: ${(props) => (props.isActive ? "scale(1.1)" : "scale(0.9)")};
   transition: transform 0.3s ease;
+  margin-top:55px;
+  @media(max-width:500px){
+    margin-top:25px;
+  }
+    @media(min-width:500px) and (max-width:800px){
+    margin-top:0px;
+  }  
+  
+`;
+
+const Photo=styled.img`
+  
+    padding-top: 20px;
+    width: 100%;
+    max-width: 35vw;
+    object-fit: cover;
+    position:relative;
+    @media(max-width:500px){
+    max-width:75vw;
+  }
+    @media(min-width:500px) and (max-width:800px){
+    max-width:55vw;
+    margin-top:40px;
+  }             
 `;
 
 const DescriptionOverlay = styled.div`
@@ -17,8 +41,8 @@ const DescriptionOverlay = styled.div`
   bottom: 4px;
   left: 50%; /* Start from the center */
   transform: translateX(-50%); /* Center horizontally */
-  width: 30vw; /* Match the parent's (image's) width */
-  height: 30vw; /* Match the image's height */
+  width: 35vw; /* Match the parent's (image's) width */
+  height: 35vw; /* Match the image's height */
   background-color: rgba(0, 0, 0, 0.77);
   color: white;
   display: ${(props) => (props.isVisible ? "flex" : "none")}; /* Only show when visible */
@@ -33,7 +57,19 @@ const DescriptionOverlay = styled.div`
   overflow-y: auto; /* Enable scrolling for long text */
   box-sizing: border-box;
   z-index: 2; /* Ensure it's above the image */
- 
+  @media(max-width:500px){
+    width:75vw;
+    height: 75vw;
+    padding:195px 15px 15px 15px;
+    font-size:7px;
+  }
+    @media(min-width:500px) and (max-width:800px){
+    width:60vw;
+    height: 60vw;
+    padding:55px 15px 15px 15px;
+    font-size:9px;
+  }
+  
 `;
 
 
@@ -134,7 +170,7 @@ const Images = () => {
             zIndex: 1,
           }}
         >
-          &#8592;
+          &#10094;
         </button>
 
         <div
@@ -153,7 +189,7 @@ const Images = () => {
               onClick={() => toggleDescription(index)}
             >
 
-              <img
+              <Photo
                 src={`data:${image.image.contentType};base64,${btoa(
                   new Uint8Array(image.image.data.data).reduce(
                     (data, byte) => data + String.fromCharCode(byte),
@@ -161,13 +197,7 @@ const Images = () => {
                   )
                 )}`}
                 alt={image.name}
-                style={{
-                  paddingTop: "20px",
-                  width: "100%",
-                  maxWidth: "30vw",
-                  objectFit: "cover",
-                  position:"relative"
-                }}
+                
                 
               />
               
@@ -201,7 +231,7 @@ const Images = () => {
             zIndex: 1,
           }}
         >
-          &#8594;
+          &#10095;
         </button>
       </div>
       <p style={{
