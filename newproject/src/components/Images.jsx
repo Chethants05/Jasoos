@@ -32,7 +32,9 @@ const Images = () => {
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
-
+  const handleFlip = (index) => {
+    setFlippedIndex(flippedIndex === index ? null : index); // Flip the card on click
+  };
   const prevImage = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -116,6 +118,7 @@ const Images = () => {
               
             >
               <img
+              onClick={handleFlip}
                 src={`data:${image.image.contentType};base64,${btoa(
                   new Uint8Array(image.image.data.data).reduce(
                     (data, byte) => data + String.fromCharCode(byte),
