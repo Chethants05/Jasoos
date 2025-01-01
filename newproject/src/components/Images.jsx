@@ -70,6 +70,7 @@ const DescriptionOverlay = styled.div`
   align-items: center;
   text-align: center;
   font-size: 14px;
+  font-weight:500;
   font-family: "Poppins";
   padding: 10px;
   white-space: pre-wrap;

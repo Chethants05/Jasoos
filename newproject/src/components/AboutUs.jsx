@@ -9,6 +9,8 @@ import styled from "styled-components";
 import JasoosImg from "../assets/Jasoos.png";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import DiscordLogo from '../assets/discord-white-icon.webp'
+import YoutubeLogo from '../assets/youtube-app-white-icon.webp'
 
 const Imgcards = styled.div`
   display: flex;
@@ -96,7 +98,7 @@ function AboutUs() {
   ref={sectionRef}
   style={{
     margin: "0",
-    paddingTop: "90px",
+    paddingTop: "50px",
     background: "linear-gradient(to right, rgb(0, 11, 76), rgb(0, 19, 78))", // Fixed the syntax
     color: "white",
     width: "100%",
@@ -135,11 +137,11 @@ function AboutUs() {
           <p
             style={{
               fontFamily: "Anton",
-              fontSize: "6rem",
+              fontSize: "5rem",
               lineHeight: "100px",
             }}
           >
-            WHO <br /> WE ARE
+            JASOOS<br /> ESPORTS
           </p>
           <p
             style={{
@@ -148,26 +150,28 @@ function AboutUs() {
               paddingTop: "10px",
             }}
           >
-            Jasoos Esports organizes thrilling tournaments offering competitive
-            opportunities with enticing prize pools.
+            Jasoos Esports organizes thrilling online and offline tournaments of games such as BGMI, Free Fire & Valorant
           </p>
         </div>
       </Row>
 
       <CounterDiv ref={ref}>
         <div>
+        <img style={{width:"35px"}} src={YoutubeLogo} alt="" />
           <p>YouTube Subscribers</p>
           <p className="count">
             {inView && <CountUp start={0} end={8500} duration={2} separator="," />}+
           </p>
         </div>
         <div>
+        <p style={{color:"white", fontSize:"35px", paddingBottom:"5px"}} href="#" class="fa fa-instagram"></p>
           <p>Instagram Followers</p>
           <p className="count">
             {inView && <CountUp start={0} end={1000} duration={2} separator="," />}+
           </p>
         </div>
         <div>
+        <img style={{width:"35px"}} src={DiscordLogo} alt="" />
           <p>Discord Followers</p>
           <p className="count">
             {inView && <CountUp start={0} end={14000} duration={2} separator="," />}+

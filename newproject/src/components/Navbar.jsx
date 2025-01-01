@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import JasoosLogo from '../assets/Jasoos.png';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp,faInstagram } from "@fortawesome/free-brands-svg-icons";
+
 
 const Othernav = styled.div`
   font-size: 15px;
@@ -59,15 +62,32 @@ const NavContainer = styled.nav`
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(87deg, rgb(12, 100, 184) 0%, rgb(1, 29, 64) 100%);
+  background: linear-gradient(87deg, rgb(10, 11, 76), rgb(0, 19, 78) 100%);
   display: flex;
   justify-content: space-between; /* Default spacing */
   align-items: center;
   color: white;
+  box-shadow: 1px 1px white;
   padding: 10px 20px;
 
   @media (max-width: 600px) {
     padding: 10px 20px; /* Adjust padding for mobile view */
+  }
+`;
+
+const MobileIcons = styled.div`
+  display: none;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 600px) {
+    display: flex; /* Show the WhatsApp icon on mobile */
+  }
+
+  .whatsapp-icon {
+    color: #25d366;
+    font-size: 25px;
+    cursor: pointer;
   }
 `;
 
@@ -92,7 +112,19 @@ const Navbar = () => {
         <img src={JasoosLogo} style={{ width: '30px' }} alt="Logo" />
       </div>
 
-      <Hamburger onClick={toggleMenu}>☰</Hamburger> {/* Hamburger Icon */}
+      <MobileIcons>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faWhatsapp} className="whatsapp-icon"  style={{
+          color:"white",
+          paddingTop:"2px"
+        }} />
+        </a>
+        <a href="#"> <FontAwesomeIcon icon={faInstagram} className="whatsapp-icon" style={{
+          color:"white",
+          paddingTop:"2px"
+        }} /></a>
+        <Hamburger onClick={toggleMenu}>☰</Hamburger> {/* Hamburger Icon */}
+      </MobileIcons>
 
       <Othernav isOpen={isOpen}>
         <Link
@@ -163,22 +195,6 @@ const Navbar = () => {
           Tournaments
         </Link>
       </Othernav>
-
-      {/* JOIN US! Button */}
-      {/* <Link
-        to="footer"
-        smooth={true}
-        duration={500}
-        style={{
-          fontWeight: '400',
-          color: 'white',
-          textDecoration: 'none',
-          cursor: 'pointer',
-          transition: 'color 0.3s',
-        }}
-      >
-        <JoinButton>JOIN US!</JoinButton>
-      </Link> */}
     </NavContainer>
   );
 };

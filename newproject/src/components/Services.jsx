@@ -8,10 +8,8 @@ const Container = styled.div`
   width: 100vw;
   flex-direction: column;
   text-align: center;
-  background: #396afc;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right,rgb(0, 21, 139),rgb(0, 34, 136));  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right,rgb(0, 20, 130),rgb(0, 32, 129)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+ background: "linear-gradient(to right, rgb(0, 11, 76), rgb(0, 19, 78))";
   align-items: center;
   justify-content: center;
 
@@ -49,11 +47,11 @@ const MiniContainer = styled.div`
   color: white;
   padding: 20px 15px 15px 15px;
   border-radius: 15px;
-  background-color: rgb(1, 29, 64);
+  background-color: #001437;
 `;
 
 const MiniTitle = styled.p`
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 8px;
 `;
 
@@ -84,7 +82,7 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
-            <MiniTitle>GFX (Graphics)</MiniTitle>
+            <MiniTitle>GFX</MiniTitle>
             <MiniText>
               Designing eye-catching visuals for events, branding, and promotions.
             </MiniText>
