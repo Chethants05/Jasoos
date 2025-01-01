@@ -1,4 +1,11 @@
 {
+    "name": "backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon server.js"
+    },
     "dependencies": {
         "axios": "^1.7.9",
         "bcrypt": "^5.1.1",
@@ -21,15 +28,6 @@
         "otp-generator": "^4.0.1",
         "razorpay": "^2.9.2",
         "video-react": "^0.16.0"
-    },
-    "name": "backend",
-    "version": "1.0.0",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js",
-        "dev": "nodemon server.js",
-        "build": "npm i"
     },
     "keywords": [],
     "author": "",
