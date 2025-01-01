@@ -126,7 +126,7 @@ const Images = () => {
                   )
                 )}`}
                 alt={image.name}
-                style={{ paddingTop:"20px", width: "100%", maxWidth: "40vw", objectFit: "cover" }}
+                style={{ paddingTop:"20px", width: "100%", maxWidth: "30vw", objectFit: "cover" }}
               />
               {image.description && (
                 <p style={{
@@ -136,6 +136,7 @@ const Images = () => {
                   fontFamily: "Poppins, serif", 
                   fontWeight:'10px', 
                   whiteSpace: "pre-wrap",
+                  textAlign:"left"
                    }}>
                   {image.description}
                 </p>

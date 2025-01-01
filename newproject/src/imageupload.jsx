@@ -54,7 +54,7 @@ const Description = styled.p`
   color: #2d3748;
   font-family: "Poppins", "serif"; 
   font-weight:10px;
-  text-align:center;
+  text-align:left;
   white-space: pre-wrap;
 `;
 

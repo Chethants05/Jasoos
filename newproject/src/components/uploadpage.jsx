@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import ImageUploadAndDisplay from "../imageupload";
-import AdminLogin from "./AdminLogin";
+
 const Container = styled.div`
   font-family: "Arial, sans-serif";
   padding: 30px;
@@ -33,12 +33,23 @@ const Input = styled.input`
   width: 100%;
   max-width: 300px;
   box-sizing: border-box;
-  white-space: pre-wrap;
 `;
 
 const FileInput = styled(Input)`
   border: 2px dashed #cbd5e0;
   background: #edf2f7;
+`;
+
+const TextArea = styled.textarea`
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  resize: vertical;
+  white-space:pre-wrap;
 `;
 
 const Button = styled.button`
@@ -61,9 +72,30 @@ const Button = styled.button`
   }
 `;
 
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+`;
+
 const UploadPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [description, setDescription] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loginCredentials, setLoginCredentials] = useState({
+    id: "",
+    password: "",
+  });
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (loginCredentials.id === "admin" && loginCredentials.password === "admin") {
+      setIsLoggedIn(true);
+    } else {
+      alert("Invalid ID or password. Please try again.");
+    }
+  };
 
   const handleImageUpload = async (event) => {
     event.preventDefault();
@@ -88,12 +120,49 @@ const UploadPage = () => {
       alert("Error uploading image. Please try again.");
     }
   };
-  // if (!isAdmin) {
-  //   return <AdminLogin onLogin={setIsAdmin} />;
-  // }
+
+  if (!isLoggedIn) {
+    return (
+      <Container>
+        <Header>Admin Login</Header>
+        <LoginContainer>
+          <Input
+            type="text"
+            placeholder="ID"
+            value={loginCredentials.id}
+            onChange={(e) =>
+              setLoginCredentials({ ...loginCredentials, id: e.target.value })
+            }
+          />
+          <Input
+            type="password"
+            placeholder="Password"
+            value={loginCredentials.password}
+            onChange={(e) =>
+              setLoginCredentials({
+                ...loginCredentials,
+                password: e.target.value,
+              })
+            }
+          />
+          <Button onClick={handleLogin}>Login</Button>
+        </LoginContainer>
+      </Container>
+    );
+  }
 
   return (
     <Container>
+            <a style={{
+        textDecoration:"none",
+        fontFamily:"Poppins",
+        color:"black",
+        border:"1px solid black",
+        padding:"5px 20px",
+        position:"absolute",
+        left:"20px",
+        top:"20px"
+      }} href="/">HOME</a>
       <Header>Upload Image</Header>
       <Form onSubmit={handleImageUpload}>
         <FileInput
@@ -101,8 +170,8 @@ const UploadPage = () => {
           onChange={(e) => setSelectedFile(e.target.files[0])}
           accept="image/*"
         />
-        <Input
-          type="text"
+        <TextArea
+          rows="5"
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}

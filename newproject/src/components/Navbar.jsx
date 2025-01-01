@@ -140,7 +140,7 @@ const Navbar = () => {
       
       {/* JOIN US! Button */}
       <Link
-        to="AboutUs"
+        to="footer"
         smooth={true}
         duration={500}
         style={{
