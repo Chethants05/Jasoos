@@ -53,6 +53,7 @@ function Footer() {
               fontSize: "14px",
               lineHeight: "1.8",
               marginBottom: "20px",
+              textAlign:"center"
             }}
           >
             Your content goes here. Edit or remove this text inline or in the
@@ -63,7 +64,7 @@ function Footer() {
           <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-facebook"></a>
           <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-instagram"></a>
           <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-youtube"></a>
-          <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-twitter"></a>
+          <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-whatsapp"></a>
 
           </div>
         </div>

@@ -64,7 +64,7 @@ function AboutUs() {
         background: "rgb(2, 36, 68)",
         color: "white",
         display: "flex",
-        width: "100vw",
+        width: "100%",
         height: "100%",
         flexDirection: "column",
         alignItems: "center",
@@ -72,6 +72,7 @@ function AboutUs() {
         textAlign: "center",
         position: "relative",
         gap: "30px",
+        overflow:"hidden"
       }}
     >
       <Row style={{
@@ -102,10 +103,11 @@ function AboutUs() {
           </p>
           <p
             style={{
-              fontFamily: "Poppins",
+              fontFamily: "Poppins", width:"300px",paddingTop:"10px"
             }}
           >
-            TEXT
+            
+            Jasoos Esports organizes thrilling tournaments offering competitive opportunities with enticing prize pools.
           </p>
         </div>
       </Row>

@@ -2,26 +2,55 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-const Imagecontainer = styled.div`
-      position: relative;
-      flex: 0 0 100%;
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      transform: index === currentIndex ? scale(1.1): scale(0.9);
-      transition: transform 0.3s ease;
-      
+const ImageContainer = styled.div`
+  position: relative;
+  flex: 0 0 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transform: ${(props) => (props.isActive ? "scale(1.1)" : "scale(0.9)")};
+  transition: transform 0.3s ease;
 `;
+
+const DescriptionOverlay = styled.div`
+  position: absolute;
+  bottom: 4px;
+  left: 50%; /* Start from the center */
+  transform: translateX(-50%); /* Center horizontally */
+  width: 30vw; /* Match the parent's (image's) width */
+  height: 30vw; /* Match the image's height */
+  background-color: rgba(0, 0, 0, 0.77);
+  color: white;
+  display: ${(props) => (props.isVisible ? "flex" : "none")}; /* Only show when visible */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Poppins";
+  padding: 10px;
+  white-space: pre-wrap;
+  overflow-y: auto; /* Enable scrolling for long text */
+  box-sizing: border-box;
+  z-index: 2; /* Ensure it's above the image */
+ 
+`;
+
+
+
+
 const Images = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleDescriptionIndex, setVisibleDescriptionIndex] = useState(null);
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/images-with-descriptions"); // Ensure the endpoint matches your API
-        console.log(response.data); // Debugging to verify API response structure
-        setImages(response.data); // Assuming response.data is an array of image objects
+        const response = await axios.get(
+          "http://localhost:5000/images-with-descriptions"
+        );
+        setImages(response.data);
       } catch (error) {
         console.error("Error fetching images:", error);
       }
@@ -32,12 +61,16 @@ const Images = () => {
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
-  const handleFlip = (index) => {
-    setFlippedIndex(flippedIndex === index ? null : index); // Flip the card on click
-  };
+
   const prevImage = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const toggleDescription = (index) => {
+    setVisibleDescriptionIndex(
+      visibleDescriptionIndex === index ? null : index
     );
   };
 
@@ -98,7 +131,7 @@ const Images = () => {
             fontSize: "2rem",
             color: "white",
             cursor: "pointer",
-            zIndex: 1, // Ensure it is above the images
+            zIndex: 1,
           }}
         >
           &#8592;
@@ -112,13 +145,15 @@ const Images = () => {
             width: "100%",
           }}
         >
+
           {images.map((image, index) => (
-            <Imagecontainer
+            <ImageContainer
               key={image._id}
-              
+              isActive={index === currentIndex}
+              onClick={() => toggleDescription(index)}
             >
+
               <img
-              onClick={handleFlip}
                 src={`data:${image.image.contentType};base64,${btoa(
                   new Uint8Array(image.image.data.data).reduce(
                     (data, byte) => data + String.fromCharCode(byte),
@@ -126,23 +161,28 @@ const Images = () => {
                   )
                 )}`}
                 alt={image.name}
-                style={{ paddingTop:"20px", width: "100%", maxWidth: "30vw", objectFit: "cover" }}
+                style={{
+                  paddingTop: "20px",
+                  width: "100%",
+                  maxWidth: "30vw",
+                  objectFit: "cover",
+                  position:"relative"
+                }}
+                
               />
+              
               {image.description && (
-                <p style={{
-                  padding: "10px",
-                  fontSize: "14px", 
-                  color: "black", 
-                  fontFamily: "Poppins, serif", 
-                  fontWeight:'10px', 
-                  whiteSpace: "pre-wrap",
-                  textAlign:"left"
-                   }}>
+                <DescriptionOverlay
+                  isVisible={visibleDescriptionIndex === index}
+                >
                   {image.description}
-                </p>
+                </DescriptionOverlay>
               )}
-            </Imagecontainer>
+              
+            </ImageContainer>
+            
           ))}
+        
         </div>
 
         {/* Next Button */}
@@ -158,12 +198,17 @@ const Images = () => {
             fontSize: "2rem",
             color: "white",
             cursor: "pointer",
-            zIndex: 1, // Ensure it is above the images
+            zIndex: 1,
           }}
         >
           &#8594;
         </button>
       </div>
+      <p style={{
+        fontFamily:"Poppins",
+        fontSize:"10px",
+        color:"white"
+      }}>Click Image For More Info</p>
     </div>
   );
 };

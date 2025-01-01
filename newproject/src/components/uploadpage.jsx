@@ -172,6 +172,7 @@ const UploadPage = () => {
         />
         <TextArea
           rows="5"
+          maxLength={500}
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
