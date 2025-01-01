@@ -177,6 +177,10 @@ const UploadPage = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+        <p style={{
+          fontFamily:"Poppins",
+          fontSize:"10px"
+        }}>Max 500 Characters</p>
         <Button type="submit">Upload</Button>
       </Form>
       <ImageUploadAndDisplay />
