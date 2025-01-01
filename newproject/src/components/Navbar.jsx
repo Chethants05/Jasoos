@@ -34,6 +34,43 @@ const Hamburger = styled.div`
   }
 `;
 
+const JoinButton = styled.button`
+  background: transparent;
+  border: 1px solid rgb(255, 255, 255);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  @media (max-width: 600px) {
+    display: none; /* Hide the button on mobile */
+  }
+`;
+
+const NavContainer = styled.nav`
+  font-family: Poppins;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(87deg, rgb(12, 100, 184) 0%, rgb(1, 29, 64) 100%);
+  display: flex;
+  justify-content: space-between; /* Default spacing */
+  align-items: center;
+  color: white;
+  padding: 10px 20px;
+
+  @media (max-width: 600px) {
+    padding: 10px 20px; /* Adjust padding for mobile view */
+  }
+`;
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to manage the toggle
 
@@ -42,30 +79,19 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      style={{
-        fontFamily: "Poppins",
-        position: 'sticky',
-        top: '0',
-        zIndex: '1000',
-        background: "linear-gradient(87deg, rgb(12, 100, 184) 0%, rgb(1, 29, 64) 100%)",
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        color: "white",
-        padding: "10px 20px",
-      }}
-    >
+    <NavContainer>
       <div
         className="logo"
         style={{
-          fontSize: "20px",
-          fontWeight: "700",
+          fontSize: '20px',
+          fontWeight: '700',
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
-        <img src={JasoosLogo} style={{ width: "30px" }} alt="Logo" />
+        <img src={JasoosLogo} style={{ width: '30px' }} alt="Logo" />
       </div>
-      
+
       <Hamburger onClick={toggleMenu}>☰</Hamburger> {/* Hamburger Icon */}
 
       <Othernav isOpen={isOpen}>
@@ -137,9 +163,9 @@ const Navbar = () => {
           Tournaments
         </Link>
       </Othernav>
-      
+
       {/* JOIN US! Button */}
-      <Link
+      {/* <Link
         to="footer"
         smooth={true}
         duration={500}
@@ -151,30 +177,9 @@ const Navbar = () => {
           transition: 'color 0.3s',
         }}
       >
-        <button
-          style={{
-            background: "transparent",
-            border: "1px solid rgb(255, 255, 255)",
-            color: "white",
-            fontSize: "13px",
-            fontWeight: "bold",
-            padding: "10px 20px",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "white";
-            e.target.style.color = "black";
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = "transparent";
-            e.target.style.color = "#4a90e2";
-          }}
-        >
-          JOIN US!
-        </button>
-      </Link>
-    </nav>
+        <JoinButton>JOIN US!</JoinButton>
+      </Link> */}
+    </NavContainer>
   );
 };
 
