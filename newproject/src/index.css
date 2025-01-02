@@ -6,11 +6,10 @@
 }
 
 body{
-    background: rgb(144,179,212);
-    background: linear-gradient(87deg, rgb(12, 100, 184) 0%, rgb(1, 29, 64) 100%);
-    overflow-x: hidden;
-
-
-   
-    
+    background-image: linear-gradient(to right, #210044 0%, #001437 100%);
 }
+
+
+::-webkit-scrollbar {
+    display: none;
+  }

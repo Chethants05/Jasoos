@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import DiscordLogo from '../assets/discord-white-icon.webp'
+import YoutubeLogo from '../assets/youtube-app-white-icon.webp'
+import JasoosLogo from '../assets/Jasoos.png'
 
 function Footer() {
   const [isMobile, setIsMobile] = useState(false);
@@ -45,7 +48,9 @@ function Footer() {
           flexWrap: "wrap",
           flexDirection:"column",
           alignItems: "center",}}>
-          <h3 style={{ fontFamily: "Poppins", marginBottom: "15px" }}>Follow Us</h3>
+
+            <img style={{width:"50px"}} src={JasoosLogo} alt="" />
+
         <a style={{ fontFamily: "Poppins", marginBottom: "15px",textDecoration:"none",color:"white" }} href="/upload"><h3>JASOOS ESPORTS</h3></a>
           <p
             style={{
@@ -56,14 +61,18 @@ function Footer() {
               textAlign:"center"
             }}
           >
-            Your content goes here. Edit or remove this text inline or in the
-            module Content settings. Style this content as needed in the Design
-            module.
+            Jasoos Esports organizes thrilling online and offline tournaments of games such as BGMI, Free Fire & Valorant
           </p>
-          <div className="socialIcons">
-          <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-facebook"></a>
+          <h3 style={{ fontFamily: "Poppins", marginTop: "15px" }}>Follow Us</h3>
+          <div className="socialIcons" style={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center",
+            justifyItems:"center"
+          }}>
+          <a href=""><img style={{width:"25px"}} src={DiscordLogo} alt="" /></a>
           <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-instagram"></a>
-          <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-youtube"></a>
+          <a href=""><img style={{width:"25px"}} src={YoutubeLogo} alt="" /></a>
           <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-whatsapp"></a>
 
           </div>
@@ -71,6 +80,10 @@ function Footer() {
 
         {/* Contact Form Section */}
         <div style={{ flex: "1", minWidth: "300px", textAlign: "center" }}>
+          <h2 style={{
+            fontFamily:"Poppins",
+            fontSize:"17px"
+          }}>CONTACT US</h2>
           <form
             style={{
               display: "flex",

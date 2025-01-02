@@ -7,14 +7,14 @@ const Herotext = styled.div`
   font-family: 'Anton', sans-serif;
   font-size: 6rem;
   line-height: 100px;
-  margin-top: 150px;
+  margin-top: 100px;
   color: white;
   letter-spacing: 2px;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transform: ${(props) => (props.isVisible ? 'translateY(0)' : 'translateY(50px)')};
   transition: opacity 1s ease, transform 1s ease;
-  @media(max-width:768px){
-  margin-top:100px;
+  @media(max-width:500px){
+  margin-top:-100px;
   }
 `;
 const Imgg =styled.div`
