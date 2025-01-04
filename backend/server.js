@@ -6,10 +6,13 @@ const Image = require("./models/image");
 require("./database");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000; // Use environment variable for port
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://jasoos.onrender.com", // Replace with your frontend domain
+  methods: ["GET", "POST", "DELETE"], // Allowed methods
+}));
 app.use(bodyParser.json());
 app.use(express.json());
 
@@ -19,12 +22,13 @@ const upload = multer({ storage });
 
 // Routes
 
-// Fetch all images and description
+// Fetch all images and descriptions
 app.get("/images-with-descriptions", async (req, res) => {
   try {
     const data = await Image.find({}, 'image description'); // Selects only 'image' and 'description' fields
     res.json(data);
   } catch (err) {
+    console.error("Error fetching images:", err);
     res.status(500).json({ error: "Error fetching images with descriptions" });
   }
 });
@@ -48,6 +52,7 @@ app.post("/images/upload", upload.single("image"), async (req, res) => {
     await newImage.save(); // Save to MongoDB
     res.status(201).json({ message: "Image uploaded successfully", newImage });
   } catch (err) {
+    console.error("Error saving image:", err);
     res.status(500).json({ error: "Error saving image" });
   }
 });
@@ -64,11 +69,12 @@ app.delete("/images/:id", async (req, res) => {
       return res.status(404).json({ error: "Image not found" });
     }
 
-    res.json({ 
-      message: "Image and description deleted successfully", 
-      deletedImage 
+    res.json({
+      message: "Image and description deleted successfully",
+      deletedImage,
     });
   } catch (err) {
+    console.error("Error deleting image:", err);
     res.status(500).json({ error: "Error deleting image and description" });
   }
 });
