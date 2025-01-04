@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const uri = process.env.MONGO_URI || "mongodb+srv://admin:admin@cluster0.dgjbe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/imageDB";
+const uri = process.env.MONGO_URI || "mongodb+srv://admin:admin@jasoos.caxoj.mongodb.net/?retryWrites=true&w=majority&appName=Jasoos/imagedb";
 
 async function connectDB() {
   try {
