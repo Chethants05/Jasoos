@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import TournLogo from '../assets/arena.png'
+import Esports from '../assets/esports.png'
+import Gfx from '../assets/gfx.png'
+import Event from '../assets/event.png'
+import Brand from '../assets/brand.png'
 
 const Container = styled.div`
   margin: 0;
@@ -42,7 +47,7 @@ const Cont = styled.div`
 `;
 
 const MiniContainer = styled.div`
-  height: 180px;
+  height: 190px;
   width: 150px;
   color: white;
   padding: 20px 15px 15px 15px;
@@ -52,7 +57,7 @@ const MiniContainer = styled.div`
 
 const MiniTitle = styled.p`
   font-weight: 700;
-  margin-bottom: 8px;
+  margin: 8px 0px 8px 0px;
 `;
 
 const MiniText = styled.p`
@@ -66,6 +71,9 @@ function Services() {
         <Title>OUR SERVICES</Title>
         <Cont>
           <MiniContainer>
+            <img style={{
+              width:"35px"
+            }} src={TournLogo} alt="" />
             <MiniTitle>Tournament Management</MiniTitle>
             <MiniText>
               Efficiently organizing esports tournaments with seamless scheduling
@@ -74,6 +82,9 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
+          <img style={{
+              width:"35px"
+            }} src={Esports} alt="" />
             <MiniTitle>eSports Production</MiniTitle>
             <MiniText>
               Providing professional broadcasting and streaming for immersive esports
@@ -82,6 +93,9 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
+          <img style={{
+              width:"35px"
+            }} src={Gfx} alt="" />
             <MiniTitle>GFX</MiniTitle>
             <MiniText>
               Designing eye-catching visuals for events, branding, and promotions.
@@ -89,6 +103,9 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
+          <img style={{
+              width:"35px"
+            }} src={Event} alt="" />
             <MiniTitle>Offline Event</MiniTitle>
             <MiniText>
               Hosting engaging in-person esports events with live competitions and
@@ -97,6 +114,9 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
+          <img style={{
+              width:"35px"
+            }} src={Brand} alt="" />
             <MiniTitle>Brand Integration</MiniTitle>
             <MiniText>
               Integrating brands and sponsors to maximize visibility and audience

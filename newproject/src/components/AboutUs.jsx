@@ -11,6 +11,7 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import DiscordLogo from '../assets/discord-white-icon.webp'
 import YoutubeLogo from '../assets/youtube-app-white-icon.webp'
+import WhatsappLogo from '../assets/whatsappLogo.png'
 
 const Imgcards = styled.div`
   display: flex;
@@ -56,7 +57,7 @@ const Card = styled.div`
 
 const CounterDiv = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 20px;
   justify-content: center;
   margin: 30px 0;
 
@@ -157,25 +158,84 @@ function AboutUs() {
 
       <CounterDiv ref={ref}>
         <div>
+        <img style={{width:"35px"}} src={WhatsappLogo} alt="" />
+          <p>Whatsapp Group members</p>
+          <p style={{
+            marginBottom:"9px"
+          }} className="count">
+            {inView && <CountUp start={0} end={1000} duration={2} separator="," />}+
+          </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
+        </div>
+        <div>
         <img style={{width:"35px"}} src={YoutubeLogo} alt="" />
           <p>YouTube Subscribers</p>
-          <p className="count">
+          <p  style={{
+            marginBottom:"9px"
+          }} className="count">
             {inView && <CountUp start={0} end={8500} duration={2} separator="," />}+
           </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
         </div>
         <div>
         <p style={{color:"white", fontSize:"35px", paddingBottom:"5px"}} href="#" class="fa fa-instagram"></p>
           <p>Instagram Followers</p>
-          <p className="count">
+          <p style={{
+            marginBottom:"9px"
+          }} className="count">
             {inView && <CountUp start={0} end={1000} duration={2} separator="," />}+
           </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
         </div>
         <div>
         <img style={{width:"35px"}} src={DiscordLogo} alt="" />
           <p>Discord Followers</p>
-          <p className="count">
+          <p style={{
+            marginBottom:"9px"
+          }} className="count">
             {inView && <CountUp start={0} end={14000} duration={2} separator="," />}+
           </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
+        </div>
+        <div>
+        <img style={{width:"35px"}} src={WhatsappLogo} alt="" />
+          <p>Whatsapp Channel</p>
+          <p style={{
+            marginBottom:"9px"
+          }} className="count">
+            {inView && <CountUp start={0} end={1000} duration={2} separator="," />}+
+          </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
         </div>
       </CounterDiv>
 

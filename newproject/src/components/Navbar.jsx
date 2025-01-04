@@ -113,16 +113,15 @@ const Navbar = () => {
       </div>
 
       <MobileIcons>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faWhatsapp} className="whatsapp-icon"  style={{
+        <a style={{
+          textDecoration:"none",
           color:"white",
-          paddingTop:"2px"
-        }} />
-        </a>
-        <a href="#"> <FontAwesomeIcon icon={faInstagram} className="whatsapp-icon" style={{
+          border:"1px solid white",
+          padding:"5px 10px 5px 10px"
+        }} href="#"> <p style={{
           color:"white",
-          paddingTop:"2px"
-        }} /></a>
+          paddingTop:"2px",
+        }} />JOIN US</a>
         <Hamburger onClick={toggleMenu}>☰</Hamburger> {/* Hamburger Icon */}
       </MobileIcons>
 
@@ -193,6 +192,23 @@ const Navbar = () => {
           onMouseLeave={(e) => (e.target.style.color = 'white')}
         >
           Tournaments
+        </Link>
+        <Link
+          to="images"
+          smooth={true}
+          duration={500}
+          
+            style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"5px 10px 5px 10px",
+          
+          }}
+          onMouseEnter={(e) => (e.target.style.color = '#4a90e2')}
+          onMouseLeave={(e) => (e.target.style.color = 'white')}
+        >
+          JOIN US!
         </Link>
       </Othernav>
     </NavContainer>
