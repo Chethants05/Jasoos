@@ -143,7 +143,7 @@ const Navbar = () => {
           Home
         </Link>
 
-        <Link
+        {/* <Link
           to="AboutUs"
           smooth={true}
           duration={500}
@@ -158,7 +158,7 @@ const Navbar = () => {
           onMouseLeave={(e) => (e.target.style.color = 'white')}
         >
           About Us
-        </Link>
+        </Link> */}
 
         <Link
           to="services"

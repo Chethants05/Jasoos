@@ -70,10 +70,10 @@ function Footer() {
             justifyContent:"center",
             justifyItems:"center"
           }}>
-          <a href=""><img style={{width:"25px"}} src={DiscordLogo} alt="" /></a>
-          <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-instagram"></a>
+          <a href="https://discord.com/invite/AatMhrgQkc"><img style={{width:"25px"}} src={DiscordLogo} alt="" /></a>
+          <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="https://insta.oia.bio/Jasoos-Esports" class="fa fa-instagram"></a>
           <a href=""><img style={{width:"25px"}} src={YoutubeLogo} alt="" /></a>
-          <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="#" class="fa fa-whatsapp"></a>
+          <a style={{textDecoration:"none",color:"white", fontSize:"25px",padding:"10px 20px 10px 20px"}} href="https://whatsapp.com/channel/0029Va6oGCHCxoB2rYsdcW26" class="fa fa-whatsapp"></a>
 
           </div>
         </div>
