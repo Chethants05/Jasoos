@@ -60,7 +60,8 @@ const CounterDiv = styled.div`
   display: flex;
   gap: 20px;
   justify-content: center;
-  margin: 30px 0;
+  margin: 30px 40px;
+  overflow:hidden;
 
   div {
     background: #001437;
