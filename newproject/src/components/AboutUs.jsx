@@ -170,6 +170,7 @@ function AboutUs() {
         <motion.img
           style={{
             width: "20rem",
+            paddingTop:"30px"
           }}
           src={JasoosImg}
           alt="About"
@@ -222,10 +223,11 @@ function AboutUs() {
           <a style={{
               textDecoration:"none",
               color:"white",
+              background: "linear-gradient(to right, rgb(27, 160, 0), rgb(0, 142, 24))",
               border:"1px solid white",
               padding:"3px 5px 3px 5px",
               borderRadius:"5px",
-              }} href="/">JOIN US</a>
+              }} href="/">JOIN GROUP</a>
         </div>
         <div>
         <img style={{width:"35px"}} src={YoutubeLogo} alt="" />
@@ -240,8 +242,9 @@ function AboutUs() {
               color:"white",
               border:"1px solid white",
               padding:"3px 5px 3px 5px",
+              background: "linear-gradient(to right, rgb(216, 11, 11), rgb(255, 0, 0))",
               borderRadius:"5px",
-              }} href="/">JOIN US</a>
+              }} href="/">SUBSCRIBE</a>
         </div>
         <div>
         <p style={{color:"white", fontSize:"35px", paddingBottom:"5px"}} href="#" class="fa fa-instagram"></p>
@@ -256,8 +259,9 @@ function AboutUs() {
               color:"white",
               border:"1px solid white",
               padding:"3px 5px 3px 5px",
+              background: "linear-gradient(to right, rgb(255, 0, 157), rgb(255, 166, 0))",
               borderRadius:"5px",
-              }} href="/">JOIN US</a>
+              }} href="https://discord.com/invite/AatMhrgQkc">FOLLOW US</a>
         </div>
         <div>
         <img style={{width:"35px"}} src={DiscordLogo} alt="" />
@@ -272,8 +276,9 @@ function AboutUs() {
               color:"white",
               border:"1px solid white",
               padding:"3px 5px 3px 5px",
+              background: "linear-gradient(to right, rgb(0, 79, 183), rgb(0, 59, 160))",
               borderRadius:"5px",
-              }} href="/">JOIN US</a>
+              }} href="https://discord.com/invite/AatMhrgQkc">JOIN US</a>
         </div>
         <div>
         <img style={{width:"35px"}} src={WhatsappLogo} alt="" />
@@ -288,8 +293,9 @@ function AboutUs() {
               color:"white",
               border:"1px solid white",
               padding:"3px 5px 3px 5px",
+              background: "linear-gradient(to right, rgb(27, 160, 0), rgb(0, 142, 24))",
               borderRadius:"5px",
-              }} href="/">JOIN US</a>
+              }} href="https://whatsapp.com/channel/0029Va6oGCHCxoB2rYsdcW26">JOIN US</a>
         </div>
       </CounterDiv>
 
