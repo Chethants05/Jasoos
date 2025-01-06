@@ -128,7 +128,7 @@ const Images = () => {
     const fetchImages = async () => {
       try {
         const response = await axios.get(
-          "https://localhost:5000/images-with-descriptions"
+          "https://jasoosbackend.onrender.com/images-with-descriptions"
         );
         setImages(response.data);
       } catch (error) {

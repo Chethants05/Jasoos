@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import TournLogo from '../assets/arena.png'
-import Esports from '../assets/esports.png'
-import Gfx from '../assets/gfx.png'
-import Event from '../assets/event.png'
-import Brand from '../assets/brand.png'
+import { motion } from 'framer-motion';
+import TournLogo from '../assets/arena.png';
+import Esports from '../assets/esports.png';
+import Gfx from '../assets/gfx.png';
+import Event from '../assets/event.png';
+import Brand from '../assets/brand.png';
 
 const Container = styled.div`
   margin: 0;
@@ -13,15 +14,13 @@ const Container = styled.div`
   width: 100vw;
   flex-direction: column;
   text-align: center;
-
- background: "linear-gradient(to right, rgb(0, 11, 76), rgb(0, 19, 78))";
+  background: linear-gradient(to right, rgb(0, 11, 76), rgb(0, 19, 78));
   align-items: center;
   justify-content: center;
-
-  height: 100vh; /* Default for desktop mode */
+  height: 100vh;
 
   @media (max-width: 768px) {
-    height: 100%; /* Adjusted for mobile view */
+    height: 100%;
   }
 `;
 
@@ -64,16 +63,37 @@ const MiniText = styled.p`
   font-size: 12px;
 `;
 
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const popIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1 },
+};
+
 function Services() {
   return (
     <Container id="services">
-      <div className="mainCont">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        transition={{ duration: 0.8 }}
+      >
         <Title>OUR SERVICES</Title>
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={popIn}
+        transition={{ duration: 0.8 }}
+      >
         <Cont>
           <MiniContainer>
-            <img style={{
-              width:"35px"
-            }} src={TournLogo} alt="" />
+            <img style={{ width: '35px' }} src={TournLogo} alt="" />
             <MiniTitle>Tournament Management</MiniTitle>
             <MiniText>
               Efficiently organizing esports tournaments with seamless scheduling
@@ -82,9 +102,7 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
-          <img style={{
-              width:"35px"
-            }} src={Esports} alt="" />
+            <img style={{ width: '35px' }} src={Esports} alt="" />
             <MiniTitle>eSports Production</MiniTitle>
             <MiniText>
               Providing professional broadcasting and streaming for immersive esports
@@ -93,9 +111,7 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
-          <img style={{
-              width:"35px"
-            }} src={Gfx} alt="" />
+            <img style={{ width: '35px' }} src={Gfx} alt="" />
             <MiniTitle>GFX</MiniTitle>
             <MiniText>
               Designing eye-catching visuals for events, branding, and promotions.
@@ -103,9 +119,7 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
-          <img style={{
-              width:"35px"
-            }} src={Event} alt="" />
+            <img style={{ width: '35px' }} src={Event} alt="" />
             <MiniTitle>Offline Event</MiniTitle>
             <MiniText>
               Hosting engaging in-person esports events with live competitions and
@@ -114,9 +128,7 @@ function Services() {
           </MiniContainer>
 
           <MiniContainer>
-          <img style={{
-              width:"35px"
-            }} src={Brand} alt="" />
+            <img style={{ width: '35px' }} src={Brand} alt="" />
             <MiniTitle>Brand Integration</MiniTitle>
             <MiniText>
               Integrating brands and sponsors to maximize visibility and audience
@@ -124,7 +136,7 @@ function Services() {
             </MiniText>
           </MiniContainer>
         </Cont>
-      </div>
+      </motion.div>
     </Container>
   );
 }
