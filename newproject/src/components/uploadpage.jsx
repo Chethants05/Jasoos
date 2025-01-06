@@ -109,7 +109,7 @@ const UploadPage = () => {
     formData.append("description", description);
 
     try {
-      await axios.post("https://jasoosbackend.onrender.com/images/upload", formData, {
+      await axios.post("https://localhost:5000/images/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Image uploaded successfully!");
