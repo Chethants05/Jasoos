@@ -1,18 +1,18 @@
 import React, { useRef } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
 import About1 from "../assets/About1.jpg";
 import jagga from "../assets/jagga.png";
 import arnab from "../assets/arnab.png";
 import balram from "../assets/balram.png";
 import Clients from "./Clients";
 import Services from "./Services";
+import styled from "styled-components";
 import JasoosImg from "../assets/Jasoos.png";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import DiscordLogo from '../assets/discord-white-icon.webp';
-import YoutubeLogo from '../assets/youtube-app-white-icon.webp';
-import WhatsappLogo from '../assets/whatsappLogo.png';
+import DiscordLogo from "../assets/discord-white-icon.webp";
+import YoutubeLogo from "../assets/youtube-app-white-icon.webp";
+import WhatsappLogo from "../assets/whatsappLogo.png";
+import { motion } from "framer-motion";
 
 const Imgcards = styled.div`
   display: flex;
@@ -89,28 +89,55 @@ const CounterDiv = styled.div`
 function AboutUs() {
   const sectionRef = useRef(null);
   const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
+    triggerOnce: true, // Run only once when in view
+    threshold: 0.2, // Trigger when 20% of the component is visible
   });
 
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
   };
-
-  const popIn = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1 },
+  
+  const textVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+        delay: 0.4,
+        type: "spring",
+        stiffness: 100, // Adds a bounce effect
+      },
+    },
   };
-
-  const animationConfig = {
-    initial: "hidden",
-    animate: inView ? "visible" : "hidden",
-    transition: { duration: 1 },
+  
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1.1, // Slight overshoot for "flashy" effect
+      transition: {
+        duration: 0.6,
+        ease: "easeInOut",
+        delay: 0.2,
+        type: "spring",
+        stiffness: 120, // Adds a bounce effect
+      },
+    },
   };
-
+  
   return (
-    <div
+    <div className="divv">
+    <motion.div
       className="mainAbout"
       id="AboutUs"
       ref={sectionRef}
@@ -129,121 +156,211 @@ function AboutUs() {
         position: "relative",
         overflow: "hidden",
       }}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
     >
-      <motion.div variants={fadeIn} {...animationConfig}>
-        <Row
+      <Row
+        style={{
+          alignItems: "center",
+          height: "100%",
+          paddingBottom: "30px",
+        }}
+      >
+        <motion.img
           style={{
-            alignItems: "center",
-            height: "100%",
-            paddingBottom: "30px",
+            width: "20rem",
           }}
-        >
-          <img
-            style={{
-              width: "20rem",
-            }}
-            src={JasoosImg}
-            alt="About"
-          />
-          <div
-            className="row1Img"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <p
-              style={{
-                fontFamily: "Anton",
-                fontSize: "5rem",
-                lineHeight: "100px",
-              }}
-            >
-              JASOOS<br /> ESPORTS
-            </p>
-            <p
-              style={{
-                fontFamily: "Poppins",
-                width: "300px",
-                paddingTop: "10px",
-              }}
-            >
-              Jasoos Esports organizes thrilling online and offline tournaments
-              of games such as BGMI, Free Fire & Valorant
-            </p>
-          </div>
-        </Row>
-      </motion.div>
-
-      <motion.div ref={ref} variants={popIn} {...animationConfig}>
-        <CounterDiv>
-          {/* Counter Div content remains unchanged */}
-        </CounterDiv>
-      </motion.div>
-
-      <motion.div variants={popIn} {...animationConfig}>
-        <div
-          className="Team"
+          src={JasoosImg}
+          alt="About"
+          variants={imageVariants}
+          initial="hidden"
+          animate="visible"
+        />
+        <motion.div
+          className="row1Img"
           style={{
-            paddingBottom: "30px",
-            height: "100%",
-            background: "linear-gradient(to right, #210044 0%, #001437 100%)",
-            width: "100vw",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
           }}
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
         >
           <p
             style={{
               fontFamily: "Anton",
-              fontSize: "4rem",
-              margin: "30px",
+              fontSize: "5rem",
+              lineHeight: "100px",
             }}
           >
-            OUR TEAM
+            JASOOS<br /> ESPORTS
           </p>
-          <Imgcards>
-            <Card>
-              <img src={jagga} alt="Founder" />
-              <p>JAGGA</p>
-              <p
-                style={{
-                  fontSize: "15px",
-                }}
-              >
-                FOUNDER & CEO
-              </p>
-            </Card>
-            <Card>
-              <img src={balram} alt="Co-Founder" />
-              <p>BALRAM</p>
-              <p
-                style={{
-                  fontSize: "15px",
-                }}
-              >
-                CO-FOUNDER & COO
-              </p>
-            </Card>
-            <Card>
-              <img src={arnab} alt="Project Lead" />
-              <p>ARNAB</p>
-              <p
-                style={{
-                  fontSize: "15px",
-                }}
-              >
-                CO-FOUNDER & <br /> PROJECT LEAD
-              </p>
-            </Card>
-          </Imgcards>
+          <p
+            style={{
+              fontFamily: "Poppins",
+              width: "300px",
+              paddingTop: "10px",
+            }}
+          >
+            Jasoos Esports organizes thrilling online and offline tournaments of
+            games such as BGMI, Free Fire & Valorant
+          </p>
+        </motion.div>
+      </Row>
+    </motion.div>
+
+      <CounterDiv ref={ref}>
+        <div>
+        <img style={{width:"35px"}} src={WhatsappLogo} alt="" />
+          <p>Whatsapp Group members</p>
+          <p style={{
+            marginBottom:"9px"
+          }} className="count">
+            {inView && <CountUp start={0} end={1000} duration={2} separator="," />}+
+          </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
         </div>
-      </motion.div>
+        <div>
+        <img style={{width:"35px"}} src={YoutubeLogo} alt="" />
+          <p>YouTube Subscribers</p>
+          <p  style={{
+            marginBottom:"9px"
+          }} className="count">
+            {inView && <CountUp start={0} end={8500} duration={2} separator="," />}+
+          </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
+        </div>
+        <div>
+        <p style={{color:"white", fontSize:"35px", paddingBottom:"5px"}} href="#" class="fa fa-instagram"></p>
+          <p>Instagram Followers</p>
+          <p style={{
+            marginBottom:"9px"
+          }} className="count">
+            {inView && <CountUp start={0} end={1000} duration={2} separator="," />}+
+          </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
+        </div>
+        <div>
+        <img style={{width:"35px"}} src={DiscordLogo} alt="" />
+          <p>Discord Followers</p>
+          <p style={{
+            marginBottom:"9px"
+          }} className="count">
+            {inView && <CountUp start={0} end={14000} duration={2} separator="," />}+
+          </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
+        </div>
+        <div>
+        <img style={{width:"35px"}} src={WhatsappLogo} alt="" />
+          <p>Whatsapp Channel</p>
+          <p style={{
+            marginBottom:"9px"
+          }} className="count">
+            {inView && <CountUp start={0} end={1000} duration={2} separator="," />}+
+          </p>
+          <a style={{
+              textDecoration:"none",
+              color:"white",
+              border:"1px solid white",
+              padding:"3px 5px 3px 5px",
+              borderRadius:"5px",
+              }} href="/">JOIN US</a>
+        </div>
+      </CounterDiv>
+
+      <div
+        className="Team"
+        style={{
+          paddingBottom: "30px",
+          height: "100%",
+          background: "linear-gradient(to right, #210044 0%, #001437 100%)",
+          width: "100vw",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          color:"white"
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "Anton",
+            fontSize: "4rem",
+            margin: "30px",
+            color:"white"
+          }}
+        >
+          OUR TEAM
+        </p>
+        <Imgcards>
+          <Card>
+            <img src={jagga} alt="Founder" />
+            <p>JAGGA</p>
+            <p
+              style={{
+                fontSize: "15px",
+                color:"white"
+              }}
+            >
+              FOUNDER & CEO
+            </p>
+          </Card>
+
+          <Card>
+            <img src={balram} alt="Co-Founder" />
+            <p>BALRAM</p>
+            <p
+              style={{
+                fontSize: "15px",
+              }}
+            >
+              CO-FOUNDER & COO
+            </p>
+          </Card>
+
+          <Card>
+            <img src={arnab} alt="Project Lead" />
+            <p>ARNAB</p>
+            <p
+              style={{
+                fontSize: "15px",
+              }}
+            >
+              CO-FOUNDER & <br /> PROJECT LEAD
+            </p>
+          </Card>
+        </Imgcards>
+      </div>
       <Services />
     </div>
   );
 }
 
 export default AboutUs;
+
+
